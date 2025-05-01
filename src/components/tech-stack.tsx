@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence } from "framer-motion"
-import { Binary, Code2, Coins, Database, Layout, Server, Wrench } from "lucide-react"
+import { Binary, Code2, Database, Layout, Server, Wrench } from "lucide-react"
 import { useState } from "react"
 import { Card, CardContent } from "./ui/card"
 import { Badge } from "./ui/badge"

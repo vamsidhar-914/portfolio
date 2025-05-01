@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react'
+import { ArrowRight, ArrowUp, Github, Linkedin, Twitter } from 'lucide-react'
 import DaySky from './day-sky'
 import NightSky from './night-sky'
 import { useTheme } from './theme-provider'
@@ -11,9 +11,18 @@ import { useTheme } from './theme-provider'
 export default function Hero() {
     const [text, setText] = useState("")
     const fullText = 'Full Stack Developer | Open Source Contributor | Tech Enthusiast'
-    const { theme,setTheme,transitioning } = useTheme();
+    const { theme,transitioning } = useTheme();
+    const [scrolled, setScrolled] = useState(false)
 
-    console.log("transitioning",transitioning);
+    useEffect(() => {
+        const handleScroll = () => {
+          setScrolled(window.scrollY > 10)
+        }
+    
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+      }, [])
+
 
     useEffect(() => {
         let index = 0;
@@ -120,11 +129,23 @@ export default function Hero() {
                     </motion.div>
                 </div>
             </div>
+            {scrolled ? (
+            <div className="fixed bottom-5 right-5 z-50">
+                <button
+                    onClick={() => scrollToSection("home")}
+                    className="bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-400 hover:text-black animate-bounce"
+                    aria-label="Scroll to top"
+                >
+                    <ArrowUp className="h-5 w-5" />
+                </button>
+            </div>
+            ): (
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
-                <button onClick={() => scrollToSection("about")} className="animate-bounce">
+                <button onClick={() => scrollToSection("about")} className="animate-bounce p-3 rounded-full hover:bg-yellow-400 hover:text-black">
                 <ArrowRight className="h-6 w-6 transform rotate-90" />
                 </button>
             </div>
+            )}
         </section>
     )
 }

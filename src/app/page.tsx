@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next"
 import About from "~/components/about"
+import Footer from "~/components/footer"
 import Hero from "~/components/Hero"
 import Navbar from "~/components/Navbar"
 import TechStack from "~/components/tech-stack"
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <About />
         <TechStack />
+        <Footer />
       </main>
   )
 }
