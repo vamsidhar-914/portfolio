@@ -14,11 +14,13 @@ type ThemeProviderProps = {
 type ThemeProviderState = {
   theme: Theme
   setTheme: (theme: Theme) => void
+  transitioning: boolean
 }
 
 const initialState: ThemeProviderState = {
   theme: "dark",
   setTheme: () => null,
+  transitioning: false,
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
@@ -26,6 +28,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [mounted ,setMounted] = useState(false);
+  const [ transitioning, setTransitioning ] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme;
@@ -51,7 +54,16 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => setTheme(theme),
+    setTheme: (theme: Theme) => {
+      setTransitioning(true);
+      setTimeout(() => {
+        setTheme(theme)
+        setTimeout(() => {
+          setTransitioning(false);
+        },500)
+      }, 300);
+    },
+    transitioning
   }
 
   return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>

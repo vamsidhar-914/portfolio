@@ -4,10 +4,16 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react'
+import DaySky from './day-sky'
+import NightSky from './night-sky'
+import { useTheme } from './theme-provider'
 
 export default function Hero() {
     const [text, setText] = useState("")
     const fullText = 'Full Stack Developer | Open Source Contributor | Tech Enthusiast'
+    const { theme,setTheme,transitioning } = useTheme();
+
+    console.log("transitioning",transitioning);
 
     useEffect(() => {
         let index = 0;
@@ -36,8 +42,23 @@ export default function Hero() {
 
     return (
         <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32">
+            <div
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
+            theme === "light" ? "opacity-100" : "opacity-0"
+            } ${transitioning ? "pointer-events-none" : ""}`}
+        >
+        <DaySky />
+        </div>
+
+        <div
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
+            theme === "dark" ? "opacity-100" : "opacity-0"
+            } ${transitioning ? "pointer-events-none" : ""}`}
+        >
+        <NightSky />
+      </div>
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} >
                         <h1 className='text-4xl md:text-6xl font-bold mb-4'>
                            {"Hi, I'm"} <span className='text-primary'>
