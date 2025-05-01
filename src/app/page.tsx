@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next"
+import About from "~/components/about"
 import Hero from "~/components/Hero"
 import Navbar from "~/components/Navbar"
 
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Navbar />
         <Hero />
+        <About />
       </main>
   )
 }

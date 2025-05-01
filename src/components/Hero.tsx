@@ -89,13 +89,13 @@ export default function Hero() {
                         className="relative aspect-square max-w-md mx-auto"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full"></div>
-                        <div className="absolute inset-4 bg-muted rounded-full overflow-hidden">
+                        {/* <div className="absolute inset-4 bg-muted rounded-full overflow-hidden"> */}
                         <img
-                            src="/placeholder.svg?height=400&width=400"
+                            src="https://cdn.pixabay.com/photo/2024/05/20/13/28/ai-generated-8775232_1280.png"
                             alt="MemoryLeaked"
                             className="w-full h-full object-cover"
                         />
-                        </div>
+                        {/* </div> */}
                     </motion.div>
                 </div>
             </div>
