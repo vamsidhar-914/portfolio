@@ -40,7 +40,7 @@ export default function Hero() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} >
                         <h1 className='text-4xl md:text-6xl font-bold mb-4'>
-                           {"hi I'm vamsi"} <span className='text-primary'>
+                           {"Hi, I'm"} <span className='text-primary'>
                                 Vamsidhar
                             </span>
                         </h1>
@@ -54,7 +54,13 @@ export default function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Button size='lg' className='group' onClick={() => scrollToSection("contact")}>contact Me</Button>
+                            <Button size="lg" className="group" onClick={() => scrollToSection("projects")}>
+                                View My Work
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Button>
+                            <Button size="lg" variant="outline" onClick={() => scrollToSection("contact")}>
+                                Contact Me
+                            </Button>
                         </div>
 
                         <div className="flex gap-4 mt-8">
