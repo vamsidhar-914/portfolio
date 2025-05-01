@@ -36,7 +36,7 @@ export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProvider
       document.documentElement.classList.add(defaultTheme);
     }
     setMounted(true);
-  },[])
+  },[defaultTheme])
   
 
   useEffect(() => {
