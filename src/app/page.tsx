@@ -3,10 +3,11 @@ import type { Metadata } from "next"
 import About from "~/components/about"
 import Hero from "~/components/Hero"
 import Navbar from "~/components/Navbar"
+import TechStack from "~/components/tech-stack"
 
 export const metadata: Metadata = {
-  title: "MemoryLeaked | Portfolio",
-  description: "Professional portfolio of MemoryLeaked - Software Developer",
+  title: "Portfolio",
+  description: "Professional portfolio of vamsidhar - Software Developer",
 }
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <About />
+        <TechStack />
       </main>
   )
 }
